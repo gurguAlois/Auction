@@ -1,0 +1,59 @@
+.adminArea > h2 {
+  color: grey;
+  margin: 0 auto;
+  width: 150px;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 35px;
+  font-weight: lighter;
+  font-family: Arial;
+}
+
+body {
+  background-image: url("/images/cumulus-cloud.jpg");
+}
+.adminArea{
+  background-color: white;
+  margin: 0 auto;
+  width: 300px;
+}
+
+.normalInput{
+  color: grey;
+  font-size: 14px;
+  display: block;
+  padding: 5px;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 220px;
+}
+.normalInput.error{
+  border: 1px solid red;
+}
+.adminArea button{
+  margin: 0 auto;
+  width: 234px;
+  display: block;
+  background-color: #3385ff;
+  padding: 5px;
+  color: white;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.adminFooter > li{
+  display: inline-block;
+  color: grey;
+  width: 110px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.adminFooter > li > a{
+  color: lightgray;
+  text-decoration: none;
+}
+p.error {
+  color: red;
+  width: 220px;
+  padding-top: 5px;
+  margin: 0 auto;
+}

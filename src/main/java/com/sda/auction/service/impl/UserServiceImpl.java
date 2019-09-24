@@ -2,17 +2,15 @@ package com.sda.auction.service.impl;
 
 import com.sda.auction.dto.UserForm;
 import com.sda.auction.mapper.UserMapper;
+import com.sda.auction.model.Item;
 import com.sda.auction.model.Role;
 import com.sda.auction.model.User;
 import com.sda.auction.repository.RoleRepository;
 import com.sda.auction.repository.UserRepository;
 import com.sda.auction.service.UserService;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -51,7 +49,6 @@ public class UserServiceImpl implements UserService {
 		Role userRole = roleRepository.findByRole("USER");
 		user.addRole(adminRole);
 		user.addRole(userRole);
-
 	}
 
 	private void encodePassword(UserForm userForm, User user) {
