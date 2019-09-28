@@ -6,9 +6,10 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DateParser {
+public class DateConverter {
 
 	private String dateFormat = "yyyy-MM-dd";
+	private String dateFormat2 = "dd-MM-yyyy";
 
 	public Date parse(String dateAsString) {
 		SimpleDateFormat dateFormater = new SimpleDateFormat(dateFormat);
@@ -19,4 +20,8 @@ public class DateParser {
 		}
 	}
 
+	public String format(Date date) {
+		SimpleDateFormat dateFormater = new SimpleDateFormat(dateFormat2);
+		return dateFormater.format(date);
+	}
 }

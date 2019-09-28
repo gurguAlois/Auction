@@ -3,6 +3,7 @@ package com.sda.auction.controller;
 import com.sda.auction.dto.ItemForm;
 import com.sda.auction.model.User;
 import com.sda.auction.service.ItemService;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -23,12 +24,17 @@ public class AdminController {
 	@RequestMapping(value = {"/home",}, method = RequestMethod.GET)
 	public ModelAndView adminHome() {
 		ModelAndView modelAndView = new ModelAndView();
+
+		List<ItemForm> itemList = itemService.findAll();
+		modelAndView.addObject("itemList", itemList);
+
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = {"/newItem",}, method = RequestMethod.GET)
-	public ModelAndView newItem() { ;
+	public ModelAndView newItem() {
+		;
 
 		ModelAndView modelAndView = new ModelAndView();
 		ItemForm itemForm = new ItemForm();
@@ -37,17 +43,13 @@ public class AdminController {
 		return modelAndView;
 	}
 
-	private String getAuthenticatedEmail() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		return authentication.getName();
-	}
 
 	@RequestMapping(value = {"/newItem",}, method = RequestMethod.POST)
 	public ModelAndView newItem(@Valid ItemForm itemForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		if (!bindingResult.hasErrors()) {
 
-			itemService.saveItem(itemForm, getAuthenticatedEmail());
+			itemService.saveItem(itemForm);
 			modelAndView.addObject("successMessage",
 					"Good job! Item saved!");
 			modelAndView.addObject(new ItemForm());

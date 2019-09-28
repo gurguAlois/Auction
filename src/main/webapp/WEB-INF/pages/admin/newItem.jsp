@@ -15,14 +15,21 @@
 </head>
 <body>
 <div class="adminArea">
-    <h2>Add new item</h2>
+    <h2>Add new item</h2>ggggggggggg
     <form:form method="POST" action="newItem" modelAttribute="itemForm">
         <form:input path="name" id="name" type="text" class="normalInput"
                     placeholder="Item name"/>
         <p class="error"><form:errors path="name"/></p>
+
         <form:input path="description" id="description" type="text" class="normalInput"
                     placeholder="Item description here"/>
         <p class="error"><form:errors path="description"/></p>
+
+        <form:input path="category" id="category" type="text" class="normalInput"
+                    placeholder="Item category here"/>
+        <p class="error"><form:errors path="category"/></p>
+
+
         <form:input path="startingPrice" id="startingPrice" type="number" class="normalInput" placeholder="Starting price"/>
         <p class="error"><form:errors path="startingPrice"/></p>
         <form:input path="startDate" id="startDate" type="date" class="normalInput"
