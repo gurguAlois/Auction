@@ -62,4 +62,16 @@ public class Item {
 		}
 		return maxBid;
 	}
+
+	public int getHighestBidValueFor(String userEmail) {
+		int result = 0;
+		for (Bid bid : bids) {
+			User user = bid.getUser();
+			if (user.getEmail().compareTo(userEmail) == 0) {
+				//bidul e al userului dat ca parametru
+				result = Math.max(result, bid.getValue());
+			}
+		}
+		return result;
+	}
 }

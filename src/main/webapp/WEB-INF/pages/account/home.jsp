@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <p>${item.category}</p>
                         <h4 class="card-product__title"><a href="/account/item/${item.id}">${item.name}</a></h4>
-                        <p class="card-product__price">$ ${item.startingPrice}</p>
+                        <p class="card-product__price">$ ${item.currentPrice}</p>
                     </div>
                 </div>
             </div>

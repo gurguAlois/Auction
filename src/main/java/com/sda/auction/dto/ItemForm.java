@@ -29,6 +29,8 @@ public class ItemForm {
 
 	private String category;
 
+	private int loggedUserBidValue;
+
 	private int currentPrice;
 
 	private boolean auctioned;

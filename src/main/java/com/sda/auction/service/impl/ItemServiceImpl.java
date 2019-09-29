@@ -61,7 +61,14 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public ItemForm findItemFormById(String itemId) {
-		return itemMapper.map(findItemById(itemId));
+		Item item = findItemById(itemId);
+
+		ItemForm itemForm = itemMapper.map(item);
+
+		String userEmail = userService.getAuthenticatedEmail();
+		int highestBidValue = item.getHighestBidValueFor(userEmail);
+		itemForm.setLoggedUserBidValue(highestBidValue);
+		return itemForm;
 	}
 
 	private void setUserByEmail(String authenticatedEmail, Item item) {

@@ -51,6 +51,8 @@ public class ItemMapper {
 		String endDate = dateConverter.format(item.getEndDate());
 		itemForm.setEndDate(endDate);
 
+
+
 		return itemForm;
 	}
 

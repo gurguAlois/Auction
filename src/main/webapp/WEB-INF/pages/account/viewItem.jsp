@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -44,9 +45,20 @@
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
                     <h3>${itemForm.name}</h3>
-                    <h2>$ ${itemForm.currentPrice}</h2>
+                    <h2>Current price is $${itemForm.currentPrice}</h2>
                     <ul class="list">
-                        <li><a class="active" href="#"><span>Category</span> : ${itemForm.category}</a></li>
+                      <c:choose>
+                         <c:when test="${itemForm.currentPrice == itemForm.loggedUserBidValue}">
+                             <li><a >Congrats! You are the highest bidder!</a></li>
+                         </c:when>
+                          <c:when test="${itemForm.loggedUserBidValue eq 0}">
+                              <li><a >You did not place any bids on this item.</a></li>
+                          </c:when>
+                          <c:otherwise>
+                              <li><a >You bid of $${itemForm.loggedUserBidValue} was outraised.</a></li>
+                          </c:otherwise>
+                      </c:choose>
+                       <li><a class="active" href="#"><span>Category</span> : ${itemForm.category}</a></li>
 
                         <li><a href="#"><span>Started at</span> : $${itemForm.startingPrice}</a></li>
                         <li><a href="#"><span>Expires on</span> : ${itemForm.endDate}</a></li>
@@ -61,9 +73,12 @@
                         </div>
                     </form:form>
                     <h2 style="color: red;">${errorMessage}</h2>
+                    <br><br>
                     <div class="card_area d-flex align-items-center">
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                        <form:form method="get" action="/account/home/">
+                            <button class="button button-header" type="submit">Back to main page
+                            </button>
+                        </form:form>
                     </div>
                 </div>
             </div>
