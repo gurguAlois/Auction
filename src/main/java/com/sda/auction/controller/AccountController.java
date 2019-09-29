@@ -59,12 +59,14 @@ public class AccountController {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!" + bidForm);
 		if (bidFormValidator.isValid(bidForm, itemId)) {
 			bidService.save(bidForm, itemId);
+			modelAndView.setViewName("redirect:/account/item/" + itemId);
+
 		} else {
 			modelAndView.addObject("errorMessage",
 					"Bid not valid!");
-
+			modelAndView.setViewName("account/viewItem");
 		}
-		modelAndView.setViewName("account/viewItem");
+
 		return modelAndView;
 	}
 }

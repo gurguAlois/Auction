@@ -15,9 +15,9 @@ public class BidFormValidator {
 	public boolean isValid(BidForm bidForm, String itemId) {
 		ItemForm itemForm = itemService.findItemFormById(itemId);
 		if (itemForm.isAuctioned()) {
-			return bidForm.getValue() >= itemForm.getCurrentPrice();
+			return bidForm.getValue() > itemForm.getCurrentPrice();
 		}
-		return bidForm.getValue() > itemForm.getCurrentPrice();
+		return bidForm.getValue() >= itemForm.getCurrentPrice();
 
 	}
 }

@@ -11,4 +11,6 @@ public interface UserService {
 	User findByEmail(String email);
 
 	String getAuthenticatedEmail();
+
+	User getLoggedInUser();
 }

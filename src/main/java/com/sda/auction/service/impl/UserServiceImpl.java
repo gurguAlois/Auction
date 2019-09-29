@@ -70,5 +70,11 @@ public class UserServiceImpl implements UserService {
 		return authentication.getName();
 	}
 
+	@Override
+	public User getLoggedInUser() {
+		String userEmail = getAuthenticatedEmail();
+		return findByEmail(userEmail);
+	}
+
 
 }
