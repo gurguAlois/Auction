@@ -34,4 +34,8 @@ public class ItemForm {
 	private int currentPrice;
 
 	private boolean auctioned;
+
+	private String ownerName;
+
+	private String imagePath;
 }

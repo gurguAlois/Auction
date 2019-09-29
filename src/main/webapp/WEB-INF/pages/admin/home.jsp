@@ -22,7 +22,6 @@
 <section class="lattest-product-area pb-40 category-list">
     <div class="row">
         <c:forEach items="${itemList}" var="item">
-           ------------- ${item.id} le id
             <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                     <div class="card-product__img">
@@ -35,8 +34,9 @@
                     </div>
                     <div class="card-body">
                         <p>${item.category}</p>
-                        <h4 class="card-product__title"><a href="#">${item.name}</a></h4>
-                        <p class="card-product__price">$ ${item.startingPrice}</p>
+                        <h4 class="card-product__title"><a href="/admin/item/${item.id}">${item.name}</a></h4>
+                        <p class="card-product__price">Started at $${item.startingPrice}</p>
+                        <p class="card-product__price">Currently at $${item.currentPrice}</p>
                     </div>
                 </div>
             </div>

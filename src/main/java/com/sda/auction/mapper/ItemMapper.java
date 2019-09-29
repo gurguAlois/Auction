@@ -3,9 +3,12 @@ package com.sda.auction.mapper;
 import com.sda.auction.dto.ItemForm;
 import com.sda.auction.model.Item;
 import com.sda.auction.util.DateConverter;
+import com.sda.auction.util.ImageUtil;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,8 +35,12 @@ public class ItemMapper {
 		Date endDate = dateConverter.parse(itemForm.getEndDate());
 		item.setEndDate(endDate);
 
+		item.setImage(ImageUtil.toBlob(itemForm.getImagePath()));
+
 		return item;
 	}
+
+
 
 	public ItemForm map(Item item) {
 		ItemForm itemForm = new ItemForm();
@@ -44,14 +51,13 @@ public class ItemMapper {
 		itemForm.setId(item.getId());
 		itemForm.setCurrentPrice(item.currentPrice());
 		itemForm.setAuctioned(!item.getBids().isEmpty());
+		itemForm.setOwnerName(item.getUserName());
 
 		String startDate = dateConverter.format(item.getStartDate());
 		itemForm.setStartDate(startDate);
 
 		String endDate = dateConverter.format(item.getEndDate());
 		itemForm.setEndDate(endDate);
-
-
 
 		return itemForm;
 	}

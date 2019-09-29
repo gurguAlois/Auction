@@ -63,6 +63,15 @@ public class LoginController {
 	}
 
 
-
+	@RequestMapping(value = {"/successfulLogin",}, method = RequestMethod.GET)
+	public ModelAndView loginSuccessful() {
+		ModelAndView modelAndView = new ModelAndView();
+		if (userService.isLoggedUserAdmin()) {
+			modelAndView.setViewName("redirect:/admin/home");
+		} else {
+			modelAndView.setViewName("redirect:/account/home");
+		}
+		return modelAndView;
+	}
 
 }

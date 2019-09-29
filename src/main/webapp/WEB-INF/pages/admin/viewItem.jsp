@@ -38,7 +38,7 @@
             <div class="col-lg-6">
                 <div class="owl-carousel owl-theme s_Product_carousel">
                     <div class="single-prd-item">
-                        <img style="width: 100%; height: auto;" class="img-fluid" src="/displayImage/?id=${itemForm.id}" alt="">
+                        <img class="img-fluid" src="/template/img/category/s-p1.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -47,35 +47,18 @@
                     <h3>${itemForm.name}</h3>
                     <h2>Current price is $${itemForm.currentPrice}</h2>
                     <ul class="list">
-                      <c:choose>
-                         <c:when test="${itemForm.currentPrice == itemForm.loggedUserBidValue}">
-                             <li><a >Congrats! You are the highest bidder!</a></li>
-                         </c:when>
-                          <c:when test="${itemForm.loggedUserBidValue eq 0}">
-                              <li><a >You did not place any bids on this item.</a></li>
-                          </c:when>
-                          <c:otherwise>
-                              <li><a >You bid of $${itemForm.loggedUserBidValue} was outraised.</a></li>
-                          </c:otherwise>
-                      </c:choose>
                        <li><a class="active" href="#"><span>Category</span> : ${itemForm.category}</a></li>
 
                         <li><a href="#"><span>Started at</span> : $${itemForm.startingPrice}</a></li>
                         <li><a href="#"><span>Expires on</span> : ${itemForm.endDate}</a></li>
+                        <li><a href="#"><span>Owned by</span> : ${itemForm.ownerName}</a></li>
                     </ul>
                     <p>${itemForm.description}</p>
-                    <form:form method="POST" action="/account/item/${itemForm.id}" modelAttribute="bidForm">
-                        <div class="bidForm">
-                            <label for="qty">My offer:</label>
 
-                            <form:input path="value" type="number" class="input-text qty" />
-                         <button class="button primary-btn" type="submit">Bid now</button>
-                        </div>
-                    </form:form>
                     <h2 style="color: red;">${errorMessage}</h2>
                     <br><br>
                     <div class="card_area d-flex align-items-center">
-                        <form:form method="get" action="/account/home/">
+                        <form:form method="get" action="/admin/home/">
                             <button class="button button-header" type="submit">Back to main page
                             </button>
                         </form:form>

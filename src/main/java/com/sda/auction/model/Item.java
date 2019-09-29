@@ -1,5 +1,6 @@
 package com.sda.auction.model;
 
+import java.sql.Blob;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -39,6 +40,9 @@ public class Item {
 	@Column
 	private Date endDate;
 
+	@Column(name = "image")
+	private Blob image;
+
 	@ToString.Exclude
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "user_id")
@@ -73,5 +77,9 @@ public class Item {
 			}
 		}
 		return result;
+	}
+
+	public String getUserName() {
+		return user.getFirstName() + " " + user.getLastName();
 	}
 }

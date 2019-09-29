@@ -8,8 +8,11 @@ import com.sda.auction.model.User;
 import com.sda.auction.repository.RoleRepository;
 import com.sda.auction.repository.UserRepository;
 import com.sda.auction.service.UserService;
+import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -47,9 +50,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	private void assignUserRoles(User user) {
-		Role adminRole = roleRepository.findByRole("ADMIN");
+//		Role adminRole = roleRepository.findByRole("ADMIN");
 		Role userRole = roleRepository.findByRole("USER");
-		user.addRole(adminRole);
+//		user.addRole(adminRole);
 		user.addRole(userRole);
 	}
 
@@ -67,6 +70,7 @@ public class UserServiceImpl implements UserService {
 
 	public String getAuthenticatedEmail() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
 		return authentication.getName();
 	}
 
@@ -74,6 +78,14 @@ public class UserServiceImpl implements UserService {
 	public User getLoggedInUser() {
 		String userEmail = getAuthenticatedEmail();
 		return findByEmail(userEmail);
+	}
+
+	@Override
+	public boolean isLoggedUserAdmin() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+		return authorities.contains(new SimpleGrantedAuthority("ADMIN"));
+
 	}
 
 

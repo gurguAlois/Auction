@@ -26,6 +26,15 @@ public class AccountController {
 	@Autowired
 	private BidFormValidator bidFormValidator;
 
+	@RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
+	public ModelAndView home() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("redirect:/account/home");
+		return modelAndView;
+	}
+
+
+
 	@RequestMapping(value = {"/home",}, method = RequestMethod.GET)
 	public ModelAndView accountHome() {
 		ModelAndView modelAndView = new ModelAndView();

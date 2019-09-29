@@ -38,6 +38,10 @@
         <form:input path="endDate" id="endDate" type="date" class="normalInput"
                     placeholder="End date"/>
         <p class="error"><form:errors path="endDate"/></p>
+
+        <form:input path="imagePath" id="imagePath" type="text" class="normalInput"
+                    placeholder="Image path"/>
+        <p class="error"><form:errors path="endDate"/></p>
         <button>Add</button>
 
         <h2>${successMessage}</h2>

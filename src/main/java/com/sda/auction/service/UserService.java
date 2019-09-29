@@ -13,4 +13,6 @@ public interface UserService {
 	String getAuthenticatedEmail();
 
 	User getLoggedInUser();
+
+	boolean isLoggedUserAdmin();
 }
