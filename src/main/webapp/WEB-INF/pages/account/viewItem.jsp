@@ -52,13 +52,15 @@
                         <li><a href="#"><span>Expires on</span> : ${itemForm.endDate}</a></li>
                     </ul>
                     <p>${itemForm.description}</p>
-                    <form:form method="POST" action="/account/item/{itemForm.id}" modelAttribute="bidForm">
+                    <form:form method="POST" action="/account/item/${itemForm.id}" modelAttribute="bidForm">
                         <div class="bidForm">
                             <label for="qty">My offer:</label>
+
                             <form:input path="value" type="number" class="input-text qty" />
                          <button class="button primary-btn" type="submit">Bid now</button>
                         </div>
                     </form:form>
+                    <h2 style="color: red;">${errorMessage}</h2>
                     <div class="card_area d-flex align-items-center">
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>

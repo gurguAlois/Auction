@@ -42,6 +42,8 @@ public class ItemMapper {
 		itemForm.setStartingPrice(item.getStartingPrice());
 		itemForm.setCategory(item.getCategory());
 		itemForm.setId(item.getId());
+		itemForm.setCurrentPrice(item.currentPrice());
+		itemForm.setAuctioned(!item.getBids().isEmpty());
 
 		String startDate = dateConverter.format(item.getStartDate());
 		itemForm.setStartDate(startDate);

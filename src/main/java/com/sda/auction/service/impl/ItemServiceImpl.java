@@ -50,14 +50,18 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public ItemForm findItemById(String itemId) {
+	public Item findItemById(String itemId) {
 		Integer id = Integer.parseInt(itemId);
 		Optional<Item> optionalItem = itemRepository.findById(id);
 		if (optionalItem.isPresent()) {
-			Item item = optionalItem.get();
-			return itemMapper.map(item);
+			return optionalItem.get();
 		}
 		throw new RuntimeException();
+	}
+
+	@Override
+	public ItemForm findItemFormById(String itemId) {
+		return itemMapper.map(findItemById(itemId));
 	}
 
 	private void setUserByEmail(String authenticatedEmail, Item item) {

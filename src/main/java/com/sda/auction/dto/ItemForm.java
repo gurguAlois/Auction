@@ -28,4 +28,8 @@ public class ItemForm {
 	private String endDate;
 
 	private String category;
+
+	private int currentPrice;
+
+	private boolean auctioned;
 }

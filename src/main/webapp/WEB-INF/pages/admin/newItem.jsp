@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="adminArea">
-    <h2>Add new item</h2>ggggggggggg
+    <h2>Add new item</h2>
     <form:form method="POST" action="newItem" modelAttribute="itemForm">
         <form:input path="name" id="name" type="text" class="normalInput"
                     placeholder="Item name"/>

@@ -50,4 +50,16 @@ public class Item {
 	@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
 	private Set<Bid> bids = new HashSet<>();
 
+	public int currentPrice() {
+		if (bids.isEmpty()) {
+			return startingPrice;
+		}
+		int maxBid = startingPrice;
+		for (Bid bid : bids) {
+			if (bid.getValue() > maxBid) {
+				maxBid = bid.getValue();
+			}
+		}
+		return maxBid;
+	}
 }
