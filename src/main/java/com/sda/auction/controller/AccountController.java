@@ -64,6 +64,8 @@ public class AccountController {
 		} else {
 			modelAndView.addObject("errorMessage",
 					"Bid not valid!");
+			ItemForm itemForm = itemService.findItemFormById(itemId);
+			modelAndView.addObject(itemForm);
 			modelAndView.setViewName("account/viewItem");
 		}
 
