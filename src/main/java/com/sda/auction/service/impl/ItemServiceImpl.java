@@ -7,6 +7,8 @@ import com.sda.auction.model.User;
 import com.sda.auction.repository.ItemRepository;
 import com.sda.auction.service.ItemService;
 import com.sda.auction.service.UserService;
+import com.sda.auction.util.ImageUtil;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +71,12 @@ public class ItemServiceImpl implements ItemService {
 		int highestBidValue = item.getHighestBidValueFor(userEmail);
 		itemForm.setLoggedUserBidValue(highestBidValue);
 		return itemForm;
+	}
+
+	@Override
+	public byte[] getItemImageByItemId(Integer itemId) throws SQLException {
+		Item item = findItemById(itemId.toString());
+		return ImageUtil.getByteArray(item.getImage());
 	}
 
 	private void setUserByEmail(String authenticatedEmail, Item item) {

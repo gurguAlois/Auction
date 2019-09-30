@@ -24,7 +24,7 @@
         <c:forEach items="${itemList}" var="item">
             <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
-                    <div class="card-product__img">jj
+                    <div class="card-product__img">
                         <img class="card-img" src="/displayImage/?id=${item.id}" alt="">
                         <ul class="card-product__imgOverlay">
                             <li><button><i class="ti-search"></i></button></li>
