@@ -25,16 +25,23 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card text-center card-product">
                     <div class="card-product__img">
-                        <img class="card-img" src="/template/img/product/product1.png" alt="">
+                        <img class="card-img" src="/displayImage/?id=${item.id}" alt="">
                         <ul class="card-product__imgOverlay">
-                            <li><button><i class="ti-search"></i></button></li>
-                            <li><button><i class="ti-shopping-cart"></i></button></li>
-                            <li><button><i class="ti-heart"></i></button></li>
+                            <li>
+                                <button><i class="ti-search"></i></button>
+                            </li>
+                            <li>
+                                <button><i class="ti-shopping-cart"></i></button>
+                            </li>
+                            <li>
+                                <button><i class="ti-heart"></i></button>
+                            </li>
                         </ul>
                     </div>
                     <div class="card-body">
                         <p>${item.category}</p>
-                        <h4 class="card-product__title"><a href="/admin/item/${item.id}">${item.name}</a></h4>
+                        <h4 class="card-product__title"><a
+                                href="/admin/item/${item.id}">${item.name}</a></h4>
                         <p class="card-product__price">Started at $${item.startingPrice}</p>
                         <p class="card-product__price">Currently at $${item.currentPrice}</p>
                     </div>

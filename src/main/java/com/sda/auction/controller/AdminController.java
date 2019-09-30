@@ -2,13 +2,10 @@ package com.sda.auction.controller;
 
 import com.sda.auction.dto.BidForm;
 import com.sda.auction.dto.ItemForm;
-import com.sda.auction.model.User;
 import com.sda.auction.service.ItemService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,7 +56,6 @@ public class AdminController {
 	public ModelAndView newItem(@Valid ItemForm itemForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		if (!bindingResult.hasErrors()) {
-
 			itemService.saveItem(itemForm);
 			modelAndView.addObject("successMessage",
 					"Good job! Item saved!");

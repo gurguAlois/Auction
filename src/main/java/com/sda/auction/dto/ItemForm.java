@@ -5,6 +5,7 @@ import javax.validation.constraints.Positive;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @ToString
@@ -37,5 +38,6 @@ public class ItemForm {
 
 	private String ownerName;
 
-	private String imagePath;
+	private MultipartFile file;
+
 }

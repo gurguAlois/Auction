@@ -35,11 +35,10 @@ public class ItemMapper {
 		Date endDate = dateConverter.parse(itemForm.getEndDate());
 		item.setEndDate(endDate);
 
-		item.setImage(ImageUtil.toBlob(itemForm.getImagePath()));
+		item.setImage(ImageUtil.toBlob(itemForm.getFile()));
 
 		return item;
 	}
-
 
 
 	public ItemForm map(Item item) {

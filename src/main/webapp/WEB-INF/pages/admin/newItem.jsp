@@ -16,7 +16,7 @@
 <body>
 <div class="adminArea">
     <h2>Add new item</h2>
-    <form:form method="POST" action="newItem" modelAttribute="itemForm">
+    <form:form method="POST" action="newItem" modelAttribute="itemForm" enctype="multipart/form-data">
         <form:input path="name" id="name" type="text" class="normalInput"
                     placeholder="Item name"/>
         <p class="error"><form:errors path="name"/></p>
@@ -38,10 +38,8 @@
         <form:input path="endDate" id="endDate" type="date" class="normalInput"
                     placeholder="End date"/>
         <p class="error"><form:errors path="endDate"/></p>
-
-        <form:input path="imagePath" id="imagePath" type="text" class="normalInput"
-                    placeholder="Image path"/>
-        <p class="error"><form:errors path="endDate"/></p>
+        <form:input type="file" name="file" path="file"/>
+        <p class="error"><form:errors path="file"/></p>
         <button>Add</button>
 
         <h2>${successMessage}</h2>

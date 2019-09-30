@@ -38,7 +38,7 @@
             <div class="col-lg-6">
                 <div class="owl-carousel owl-theme s_Product_carousel">
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="/template/img/category/s-p1.jpg" alt="">
+                        <img class="img-fluid" src="/displayImage/?id=${itemForm.id}" alt="">
                     </div>
                 </div>
             </div>
